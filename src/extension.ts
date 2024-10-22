@@ -19,8 +19,8 @@ const CHAR_WIDTH = 8;
 const CHAR_HEIGHT = 20;
 
 // 在全局变量部分添加
-const MAX_FALLING_LETTERS = 50;
-const LETTER_LIFETIME = 60000; // 60 seconds in milliseconds
+const MAX_FALLING_LETTERS = 30;
+const LETTER_LIFETIME = 10000; // 60 seconds in milliseconds
 
 // 激活扩展时的回调函数
 export function activate(context: vscode.ExtensionContext) {
@@ -95,8 +95,8 @@ function createFallingLetters(text: string, position: vscode.Position, editor: v
 	const startChar = visibleRange.start.character;
 
 	text.split('').forEach((char, index) => {
-		const x = (position.character - startChar) * CHAR_WIDTH;
-		const y = (position.line - startLine) * CHAR_HEIGHT;
+		const x = (position.character) * CHAR_WIDTH;
+		const y = (position.line) * CHAR_HEIGHT;
 
 		console.log(`Creating letter '${char}' at: ${x}, ${y}`);
 
@@ -136,7 +136,7 @@ function startFallingCharsEffect() {
 		clearInterval(animationInterval);
 	}
 
-	const FPS = 60; // 提高帧率以获得更流畅的效果
+	const FPS = 20; // 提高帧率以获得更流畅的效果
 	const FRAME_DURATION = 1000 / FPS;
 
 	animationInterval = setInterval(() => {
@@ -175,8 +175,12 @@ const fallingLetterDecorationType = vscode.window.createTextEditorDecorationType
 // 初始化物理引擎
 function initPhysics() {
 	engine = Matter.Engine.create({
-			gravity: { x: 0, y: 0.5, scale: 0.001 }
-		});
+		gravity: {
+			x: 0,
+			y: 2,
+			scale: 0.001
+		}
+	});
 	runner = Matter.Runner.create();
 	Matter.Runner.run(runner, engine);
 
@@ -238,4 +242,3 @@ function cleanupExcessLetters() {
 		}
 	}
 }
-
