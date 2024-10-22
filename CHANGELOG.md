@@ -12,6 +12,6 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Optimize physics engine performance
 - Fix issue where characters don't fall correctly in certain situations
 
-## [0.0.1] - 2023-03-15
+## [0.0.1] - 2024-10-22
 
 - Initial release
