@@ -2,6 +2,15 @@
 import * as vscode from 'vscode';
 import Matter from 'matter-js';
 
+// 为 Matter.js 提供 requestAnimationFrame 的替代实现
+(global as any).requestAnimationFrame = (callback: (time: number) => void): NodeJS.Timeout => {
+    return setTimeout(() => callback(Date.now()), 1000 / 60);
+};
+
+(global as any).cancelAnimationFrame = (handle: NodeJS.Timeout): void => {
+    clearTimeout(handle);
+};
+
 // 定义FallingLetter接口
 interface FallingLetter {
 	char: string;
@@ -20,7 +29,7 @@ const CHAR_HEIGHT = 20;
 
 // 在全局变量部分添加
 const MAX_FALLING_LETTERS = 30;
-const LETTER_LIFETIME = 10000; // 60 seconds in milliseconds
+const LETTER_LIFETIME = 10000; // 10 seconds in milliseconds
 
 // 激活扩展时的回调函数
 export function activate(context: vscode.ExtensionContext) {
@@ -216,8 +225,12 @@ export function deactivate() {
 	if (animationInterval) {
 		clearInterval(animationInterval);
 	}
-	Matter.Runner.stop(runner);
-	Matter.Engine.clear(engine);
+	if (runner) {
+		Matter.Runner.stop(runner);
+	}
+	if (engine) {
+		Matter.Engine.clear(engine);
+	}
 	fallingLetters.forEach(letter => letter.decorationType.dispose());
 	fallingLetters = [];
 }
