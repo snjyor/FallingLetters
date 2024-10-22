@@ -7,3 +7,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [Unreleased]
 
 - Initial release
+- Implement basic falling characters functionality
+- Add command to start and stop falling characters
+- Optimize physics engine performance
+- Fix issue where characters don't fall correctly in certain situations
+
+## [0.0.1] - 2023-03-15
+
+- Initial release

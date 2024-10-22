@@ -1,71 +1,31 @@
-# fallingletters README
+# VSCode 字符掉落插件
 
-This is the README for your extension "fallingletters". After writing up a brief description, we recommend including the following sections.
+这个 VSCode 插件为您的编辑器添加了一个有趣的视觉效果 - 当您删除文本时,被删除的字符会以物理模拟的方式掉落。
 
-## Features
+## 功能
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- 删除文本时,字符会掉落并模拟物理效果
+- 可以通过命令面板启动/停止字符掉落效果
+- 支持自定义掉落字符的样式和行为
 
-For example if there is an image subfolder under your extension project workspace:
+## 使用方法
 
-\!\[feature X\]\(images/feature-x.png\)
+1. 安装插件后,在命令面板中搜索 "Start Falling Characters" 并执行
+2. 开始编辑文本,删除字符时观察掉落效果
+3. 要停止效果,在命令面板中搜索 "Stop Falling Characters" 并执行
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## 配置选项
 
-## Requirements
+在设置中,您可以自定义以下选项:
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- `fallingChars.gravity`: 调整重力效果 (默认: 0.001)
+- `fallingChars.maxCharacters`: 最大同时存在的掉落字符数 (默认: 200)
+- `fallingChars.characterColor`: 掉落字符的颜色 (默认: "#cccccc")
 
-## Extension Settings
+## 贡献
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+欢迎提交 issues 和 pull requests 来改进这个插件!
 
-For example:
+## 许可
 
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+MIT

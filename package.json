@@ -1,21 +1,35 @@
 {
   "name": "fallingletters",
   "displayName": "Falling Letters",
-  "description": "A fun VS Code extension that creates a falling animation effect for deleted characters, enhancing the visual experience of coding.",
+  "description": "VSCode extension for falling letter effect",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.94.0"
+    "vscode": "^1.60.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:extension.startFallingChars"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "fallingletters.helloWorld",
-        "title": "Hello World"
+        "command": "extension.startFallingChars",
+        "title": "Start Falling Characters"
+      },
+      {
+        "command": "extension.deleteWithEffect",
+        "title": "Delete with Falling Effect"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.deleteWithEffect",
+        "key": "ctrl+backspace",
+        "mac": "cmd+backspace",
+        "when": "editorTextFocus"
       }
     ]
   },
@@ -24,18 +38,18 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src",
-    "test": "vscode-test"
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.94.0",
-    "@types/mocha": "^10.0.8",
-    "@types/node": "20.x",
-    "@typescript-eslint/eslint-plugin": "^8.7.0",
-    "@typescript-eslint/parser": "^8.7.0",
-    "eslint": "^9.11.1",
-    "typescript": "^5.6.2",
-    "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@types/vscode": "^1.60.0",
+    "@types/node": "14.x",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.27.0",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "matter-js": "^0.18.0"
   }
 }
